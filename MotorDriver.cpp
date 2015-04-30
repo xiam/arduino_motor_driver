@@ -54,12 +54,6 @@ void MotorDriver::setModulatedStatus(int status, float speed)
 {
   int amount = speed*255;
 
-  Serial.print("speed ");
-  Serial.println(speed);
-
-  Serial.print("amount ");
-  Serial.println(amount);
-
   this->status = status;
 
   if (this->status & MAKERWORKSHOP_MOTOR_DRIVER_FORWARD) {
