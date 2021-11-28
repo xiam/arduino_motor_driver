@@ -32,17 +32,17 @@ MotorDriver::MotorDriver(uint8_t pinA, uint8_t pinB)
 
 void MotorDriver::Forward(float speed)
 {
-  this->setModulatedStatus(MAKERWORKSHOP_MOTOR_DRIVER_FORWARD, speed);
+  this->setModulatedStatus(MOTOR_DRIVER_FORWARD, speed);
 }
 
 void MotorDriver::Backward(float speed)
 {
-  this->setModulatedStatus(MAKERWORKSHOP_MOTOR_DRIVER_BACKWARD, speed);
+  this->setModulatedStatus(MOTOR_DRIVER_BACKWARD, speed);
 }
 
 void MotorDriver::Halt()
 {
-  this->setModulatedStatus(MAKERWORKSHOP_MOTOR_DRIVER_OFF, 0);
+  this->setModulatedStatus(MOTOR_DRIVER_OFF, 0);
 }
 
 void MotorDriver::SetSpeed(float speed)
@@ -56,10 +56,10 @@ void MotorDriver::setModulatedStatus(int status, float speed)
 
   this->status = status;
 
-  if (this->status & MAKERWORKSHOP_MOTOR_DRIVER_FORWARD) {
+  if (this->status & MOTOR_DRIVER_FORWARD) {
     analogWrite(this->pinB, LOW);
     analogWrite(this->pinA, amount);
-  } else if (this->status & MAKERWORKSHOP_MOTOR_DRIVER_BACKWARD) {
+  } else if (this->status & MOTOR_DRIVER_BACKWARD) {
     analogWrite(this->pinA, LOW);
     analogWrite(this->pinB, amount);
   } else {
